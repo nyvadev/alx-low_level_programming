@@ -12,9 +12,9 @@ void print_rev(char *s)
 
 	while (s[i])
 	{
-		len++;
 		i++;
 	}
+	len = i-1
 
 	while (len >= 0)
 	{
