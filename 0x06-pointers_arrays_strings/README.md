@@ -1,3 +1,5 @@
+#0x06. C - More pointers, arrays and strings
+
 # 0x06. C - More pointers, arrays and strings
 
 ## 0-strcat.c 
@@ -38,3 +40,4 @@
 
 ## 103-print_buffer.c 
 * a function that prints a buffer.
+
