@@ -1,43 +1,52 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
- * argstostr - concatenates the argumnets of program
- * @ac: number of argumnets
- * @av: pointer to the arguments array
- * Return: pointer to concatenated arguements
+ * argstostr - concatenate all arguments of program
+ * Description: each argument seperated by a new line
+ * @ac: altenating current args
+ * @av: no such thing as alternating voltage
+ * Return: pointer or NULL
  */
+
 char *argstostr(int ac, char **av)
 {
-char *ptr;
-int index = 0, i, j, count = 0;
+	int num = 0;
+	int i;
+	int j = 0;
+	int k = 0;
+	char *ptr = NULL;
 
-for (i = 0; i < ac; i++)
-{
-for (j = 0; av[i][j]; j++)
-{
-count++;
-}
-count++;
-}
+	if (ac == 0 || av == 0)
+		return ('\0');
 
-ptr = malloc((count + 1) * (sizeof(char)));
+	for (i = 0; i < ac; i++)
+	{
+		while (av[i][k] != '\0')
+		{
+			num = num + 1;
+			k++;
+		}
+		num++;
+		k = 0;
+	}
 
-for (i = 0; i < ac; i++)
-{
-for (j = 0; av[i][j]; j++)
-{
-ptr[index++] = av[i][j];
-}
-if (av[i][j] == '\0')
-{
-ptr[index++] = '\n';
-}
-}
+	num++;
+	ptr = malloc(num * sizeof(char));
 
-ptr[index + 1] = '\n';
+	if (ptr == NULL)
+		return (NULL);
 
-return (ptr);
+	for (i = 0; i < ac; i++)
+	{
+		while (av[i][k] != '\0')
+		{
+			ptr[j++] = av[i][k];
+			k++;
+		}
+		ptr[j++] = '\n';
+		k = 0;
+	}
+	ptr[j] = '\0';
+
+	return (ptr);
 }
-
